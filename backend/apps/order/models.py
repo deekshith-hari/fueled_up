@@ -3,10 +3,6 @@ from apps.item.models import Item
 from apps.users.models import User
 from config.constants import *
 
-
-# Create your models here.
-
-
 class Order(models.Model):
     class Meta(object):
         db_table = 'order'
@@ -36,10 +32,34 @@ class Order(models.Model):
         'Postal Code', blank=False, null=False, db_index=True
     )
     country = models.CharField(
-        'Country', blank=False, null=False, db_index=True, default='United State'
+        'Country', blank=False, null=False, max_length=25, db_index=True, default='United State'
     )
-    telephone = models.CharField(
+    telephone = models.IntegerField(
         'Telephone', blank=True, null=True, db_index=True
+    )
+    created_at = models.DateTimeField(
+        'Created At', blank=True, auto_now_add=True
+    )
+    updated_at = models.DateTimeField(
+        'Updated At', blank=True, auto_now=True
+    )
+
+    def __str__(self):
+        return self.full_name
+
+
+class OrderItem(models.Model):
+    class Meta(object):
+        db_table = 'order_item'
+
+    order_id = models.ForeignKey(
+        Order, on_delete=models.CASCADE, db_index=True
+    )
+    item_id = models.ForeignKey(
+        Item, on_delete=models.CASCADE, db_index=True
+    )
+    quantity = models. IntegerField(
+        'Quantity', blank=False, null=False, db_index=True
     )
     created_at = models.DateTimeField(
         'Created At', blank=True, auto_now_add=True
