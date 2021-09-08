@@ -23,3 +23,18 @@ class CartAdd(CustomLoginRequiredMixin, generics.CreateAPIView):
         # Set the user who login
         request.data['user'] = request.login_user.id
         return self.create(request, *args, **kwargs)
+
+class CartDelete(CustomLoginRequiredMixin, generics.DestroyAPIView):
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer
+
+    def delete(self, request, *args, **kwargs):
+        cart = Cart.objects.get(pk=self.kwargs['pk'])
+        if cart.user.id != request.login_user.id:
+            response = Response({'error': 'You can not delete the cartlist not owned by you.'}, status=status.HTTP_404_NOT_FOUND)
+            response.accepted_renderer = JSONRenderer()
+            response.accepted_media_type = "application/json"
+            response.renderer_context = {}
+            return response
+        return self.destroy(request, *args, **kwargs)
+

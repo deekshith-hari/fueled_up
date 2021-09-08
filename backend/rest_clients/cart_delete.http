@@ -1,5 +1,5 @@
 # To use the http client, install "REST Client" extension of Visual Studio Code.
 # To send the request and get the result, click the 'Send Request' 
-DELETE http://127.0.0.1:8000/cartlists/delete/6/ HTTP/1.1
+DELETE http://127.0.0.1:8000/127.0.0.1:8000/carts/delete/1/ HTTP/1.1
 content-type: application/json
-Authorization: 7a5e538e94e80011661b0d1560a63607fba9d102acb5cba89cdf4445c94a
+Authorization: 84b505e383c67d36f50c8490a5ea8709cb57dbc49b5ce2ba48014cc504f6
