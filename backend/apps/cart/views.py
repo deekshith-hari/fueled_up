@@ -1,3 +1,4 @@
+from django.db.models.query import QuerySet
 from django.shortcuts import render
 from rest_framework import generics
 from rest_framework import status
@@ -7,7 +8,7 @@ from .serializers import CartSerializer, CartAddSerializer
 from ..users.mixins import CustomLoginRequiredMixin
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Cart
-
+from .forms import CartForm
 
 class CartList(CustomLoginRequiredMixin, generics.ListAPIView):
     queryset = Cart.objects.all()
@@ -38,3 +39,27 @@ class CartDelete(CustomLoginRequiredMixin, generics.DestroyAPIView):
             return response
         return self.destroy(request, *args, **kwargs)
 
+class CartUpdate(CustomLoginRequiredMixin, generics.UpdateAPIView):
+    queryset = Cart.objects.all()
+    serializer_class = CartAddSerializer
+    
+    def update(self, request, *args, **kwargs):
+        cart = Cart.objects.get(pk=self.kwargs['pk'])
+        if cart.user.id != request.login_user.id:
+            response = Response({'error': 'You can not update the cartlist not owned by you.'}, status=status.HTTP_404_NOT_FOUND)
+            response.accepted_renderer = JSONRenderer()
+            response.accepted_media_type = "application/json"
+            response.renderer_context = {}
+            return response
+    
+        cart_form = CartForm({"user":request.login_user.id, "item":cart.item.id, "quantity":cart.quantity})
+        print(cart_form)
+        if not cart_form.is_valid():
+            response = Response({"error": "Request data is not correct."}, status=status.HTTP_404_NOT_FOUND)
+            response.accepted_renderer = JSONRenderer()
+            response.accepted_media_type = "application/json"
+            response.renderer_context = {}
+            return response
+        cart_form.save()
+        serializer = CartAddSerializer([cart_form], many=True)
+        return Response(serializer.data[0])

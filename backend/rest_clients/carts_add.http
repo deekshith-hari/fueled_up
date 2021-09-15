@@ -2,10 +2,10 @@
 # To send the request and get the result, click the 'Send Request' 
 POST http://127.0.0.1:8000/carts/add/ HTTP/1.1
 content-type: application/json
-Authorization: 84b505e383c67d36f50c8490a5ea8709cb57dbc49b5ce2ba48014cc504f6
+Authorization: 74aa6fd4b80ddaa720ae86510c4fc251f3b242bed9d224ab07989ac64dcc
 
 {
 	"product": 10,
-	"quantity": 5,
-	"item": 1
+	"quantity": 10,
+	"item": 2
 }

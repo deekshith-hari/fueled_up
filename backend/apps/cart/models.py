@@ -12,7 +12,7 @@ class Cart(models.Model):
     item = models.ForeignKey(
         Item, on_delete=models.CASCADE, db_index=True
     )
-    quantity = models. IntegerField(
+    quantity = models.IntegerField(
         'Quantity', blank=False, null=False, db_index=True
     )
     created_at = models.DateTimeField(

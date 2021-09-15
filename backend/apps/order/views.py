@@ -6,13 +6,15 @@ from rest_framework.renderers import JSONRenderer
 from ..users.mixins import CustomLoginRequiredMixin
 from .models import OrderItem, Order
 from apps.cart.models import Cart
-from .serializers import OrderAddSerializer
+from .serializers import OrderSerializer
+from django.core import serializers
 from .forms import OrderForm, OrderItemForm
+import json
 
 # Create your views here.
 class OrderAdd(CustomLoginRequiredMixin, generics.CreateAPIView):
     queryset = Order.objects.all()
-    serializer_class = OrderAddSerializer
+    serializer_class = OrderSerializer
 
     def post(self, request, *args, **kwargs):
         # Save to order
@@ -32,11 +34,11 @@ class OrderAdd(CustomLoginRequiredMixin, generics.CreateAPIView):
 
         # Save to order items
         for cart in carts:
-            order_item_form = OrderItemForm(order=order.id, item=cart.item.id, quantity=cart.quantity)
+            order_item_form = OrderItemForm({"order": order.id, "item":cart.item.id, "quantity":cart.quantity})
             order_item_form.save()
+        
+        # Delete cart items
+        carts.delete()
             
-        response = Response({"order": JSON.stringify(order)}, status=status.HTTP_404_NOT_FOUND)
-        response.accepted_renderer = JSONRenderer()
-        response.accepted_media_type = "application/json"
-        response.renderer_context = {}
-        return response
+        serializer = OrderSerializer([order], many=True)
+        return Response(serializer.data[0])

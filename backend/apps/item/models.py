@@ -29,5 +29,4 @@ class Item(models.Model):
         'Updated At', blank=True, auto_now=True
     )
 
-    def __str__(self):
-        return self.name
+    
