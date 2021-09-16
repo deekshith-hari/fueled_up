@@ -1,10 +1,9 @@
 # To use the http client, install "REST Client" extension of Visual Studio Code.
 # To send the request and get the result, click the 'Send Request' 
-PUT http://127.0.0.1:8000/carts/update/25/ HTTP/1.1
+PUT http://127.0.0.1:8000/carts/update/33/ HTTP/1.1
 content-type: application/json
 Authorization: 74aa6fd4b80ddaa720ae86510c4fc251f3b242bed9d224ab07989ac64dcc
 
 {  
-	"item": 2,
-	"quantity": 1000
+	"quantity": 9999
 }

@@ -41,7 +41,7 @@ class CartDelete(CustomLoginRequiredMixin, generics.DestroyAPIView):
 
 class CartUpdate(CustomLoginRequiredMixin, generics.UpdateAPIView):
     queryset = Cart.objects.all()
-    serializer_class = CartAddSerializer
+    serializer_class = CartSerializer
     
     def update(self, request, *args, **kwargs):
         cart = Cart.objects.get(pk=self.kwargs['pk'])
@@ -51,15 +51,8 @@ class CartUpdate(CustomLoginRequiredMixin, generics.UpdateAPIView):
             response.accepted_media_type = "application/json"
             response.renderer_context = {}
             return response
-    
-        cart_form = CartForm({"user":request.login_user.id, "item":cart.item.id, "quantity":cart.quantity})
-        print(cart_form)
-        if not cart_form.is_valid():
-            response = Response({"error": "Request data is not correct."}, status=status.HTTP_404_NOT_FOUND)
-            response.accepted_renderer = JSONRenderer()
-            response.accepted_media_type = "application/json"
-            response.renderer_context = {}
-            return response
-        cart_form.save()
-        serializer = CartAddSerializer([cart_form], many=True)
+
+        cart.quantity = request.data['quantity']
+        cart.save()
+        serializer = CartSerializer([cart], many=True)
         return Response(serializer.data[0])

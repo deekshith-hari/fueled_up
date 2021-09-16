@@ -5,7 +5,6 @@ content-type: application/json
 Authorization: 74aa6fd4b80ddaa720ae86510c4fc251f3b242bed9d224ab07989ac64dcc
 
 {
-	"product": 10,
-	"quantity": 10,
+	"quantity": 6,
 	"item": 2
 }
