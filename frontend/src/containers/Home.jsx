@@ -1,38 +1,95 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Loading from "../assets/img/loading.gif";
-import PostForm from "../components/Posts/PostForm";
-import Post from "../components/Posts/Post";
-import { fetchPosts } from "../reducks/posts/operations";
-import { getPosts } from "../reducks/posts/selectors";
+import React from "react";
+import ImgBackgroundRun from "../assets/img/background-running.png";
+import ImgItem1 from "../assets/img/item1.png";
+import ImgItem2 from "../assets/img/item2.png";
 
-const Home = () => {
-  const dispatch = useDispatch();
-  const selector = useSelector((state) => state);
-  const posts = getPosts(selector);
-
-  useEffect(() => {
-    dispatch(fetchPosts());
-  }, []);
-
+export default function Home() {
   return (
-    <section class="content">
-      <PostForm />
-      <section class="posts">
-        {posts.length > 0 ? (
-          <ul>
-            {posts.map((post) => (
-              <Post key={post.id} post={post} />
-            ))}
-          </ul>
-        ) : (
-          <div class="loading">
-            <img src={Loading} class="" />
-          </div>
-        )}
+    <>
+      <section class="background-section">
+        <div class="inner-div">
+          <p class="high">
+            {" "}
+            HIGH <span>PERFORMANCE</span> SPORTS{" "}
+          </p>
+          <p class="herbal">HERBAL PROTINE</p>
+        </div>
+        <div class="bg-img">
+          <img src={ImgBackgroundRun} alt="" />
+        </div>
       </section>
-    </section>
+      <section class="main">
+        <ul>
+          <li>
+            <div class="item-img">
+              <img src={ImgItem1} alt="" />
+            </div>
+            <div class="item-info">
+              <div class="info1">
+                <p class="item-name">Yellow Sea moss</p>
+                <p class="item-description">
+                  Rare wildcrafted yellow sea mosss
+                </p>
+              </div>
+              <div class="info2">
+                <p class="price">$380</p>
+                <button class="add-btn">Add +</button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-img">
+              <img src={ImgItem2} alt="" />
+            </div>
+            <div class="item-info">
+              <div class="info1">
+                <p class="item-name">Purple Sea moss</p>
+                <p class="item-description">
+                  Rare wildcrafted yellow sea mosss
+                </p>
+              </div>
+              <div class="info2">
+                <p class="price">$380</p>
+                <button class="add-btn">Add +</button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-img">
+              <img src={ImgItem2} alt="" />
+            </div>
+            <div class="item-info">
+              <div class="info1">
+                <p class="item-name">Purple Sea moss</p>
+                <p class="item-description">
+                  Rare wildcrafted yellow sea mosss
+                </p>
+              </div>
+              <div class="info2">
+                <p class="price">$380</p>
+                <button class="add-btn">Add +</button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-img">
+              <img src={ImgItem2} alt="" />
+            </div>
+            <div class="item-info">
+              <div class="info1">
+                <p class="item-name">Purple Sea moss</p>
+                <p class="item-description">
+                  Rare wildcrafted yellow sea mosss
+                </p>
+              </div>
+              <div class="info2">
+                <p class="price">$380</p>
+                <button class="add-btn">Add +</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </>
   );
-};
-
-export default Home;
+}

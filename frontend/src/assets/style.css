@@ -1,100 +1,748 @@
-/*
-Common
-************************************/
-
+/* ***************************
+COMMON
+****************************** */
 html,
 body {
-  height: 100%;
-  font-family: sans-serif;
-}
-
-.content {
-  width: 600px;
-  height: 100%;
-  margin: 0 auto;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-}
-
-@media screen and (max-width: 500px) {
-}
-
-/*
-Posts
-************************************/
-
-.post_form {
-  padding: 20px 40px;
-  border-bottom: 1px solid #ccc;
-}
-
-.post_form input {
-  width: 70%;
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-}
-
-.post_form textarea {
-  width: 70%;
-  padding: 10px;
-  border: 1px solid #ccc;
-}
-
-.posts ul {
-  padding: 0;
-}
-
-.posts li {
+  margin: 0;
+  width: 100%;
   position: relative;
+  min-height: 150vh;
+}
+
+/* ****************************
+HEADER
+******************************* */
+
+header {
   display: flex;
-  border-bottom: 1px solid #ccc;
-  padding: 20px 40px;
-  list-style: none;
-}
-
-.posts li .menu_icon {
-  width: 20px;
-  position: absolute;
-  right: 30px;
-  top: 18px;
-}
-
-.posts li .menu {
-  position: absolute;
-  top: 40px;
-  right: 15px;
-  border: 1px solid #ccc;
-  background-color: white;
-  padding: 10px 15px;
-  font-size: 13px;
-  border-radius: 3px;
-}
-
-.posts li img {
+  justify-content: space-between;
+  font-family: Bebas Neue;
   width: 100%;
 }
 
-.posts li .menu a {
-  text-decoration: none;
+header .icon-text {
+  display: flex;
+  width: 10%;
+  margin: 0;
+  padding: 0 10px;
+  font-size: 3em;
 }
 
-.posts li .logo {
-  flex-basis: 15%;
+header .icon-text .fuled {
+  margin: 0;
+  padding: 10px 10px;
+  color: #f76028;
 }
 
-.posts li .logo img {
+header .icon-text .up {
+  margin: 0;
+  padding: 10px 0px;
+}
+
+header .header-links {
+  display: flex;
+  width: 15%;
+  font-size: 1.2em;
+  padding: 15px;
+}
+
+header .header-links p {
+  padding: 0;
+  margin: 0;
+}
+
+header .header-links .sign-in-link {
+  padding: 5px 20px;
+  font-family: Roboto;
+}
+
+header .header-links .img img {
+  width: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 900px) {
+  header .header-links {
+    width: 35%;
+  }
+  header .header-links .sign-in-link {
+    padding: 5px 15px;
+  }
+}
+
+/*********************************
+ BACKGROUND SECTION
+ *********************************/
+
+.background-section {
+  width: 100%;
+  min-height: 80vh;
+}
+
+.background-section .inner-div {
   width: 60%;
+  height: 80vh;
+  position: absolute;
+  z-index: 100;
+  background: #f76028;
+  clip-path: polygon(100% 0, 60% 100%, 0 100%, 0 0);
 }
 
-.posts li .name_body {
-  flex-basis: 85%;
-}
-
-.posts li .name_body .name {
+.background-section .inner-div .high {
+  position: absolute;
+  width: 40%;
+  margin: 0 auto;
+  font-size: 4em;
+  left: 10%;
+  top: 25%;
+  font-family: Helvetica;
+  color: #e4e4e4;
   font-weight: bold;
 }
 
-.posts li .name_body .datetime {
-  color: gray;
+.background-section .inner-div .high span {
+  font-weight: lighter;
+  font-size: 3rem;
+}
+
+.background-section .inner-div .herbal {
+  position: absolute;
+  width: 40%;
+  margin: 0 auto;
+  font-size: 3em;
+  left: 10%;
+  top: 60%;
+  font-family: Helvetica;
+  color: #e4e4e4;
+}
+
+.background-section .bg-img {
+  position: absolute;
+  width: 70%;
+  left: 30%;
+}
+
+.background-section .bg-img img {
+  height: 80vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 500px) {
+  .background-section .inner-div .high {
+    font-size: 1.5em;
+  }
+  .background-section .inner-div .high span {
+    font-size: 0.8em;
+  }
+  .background-section .inner-div .herbal {
+    font-size: 1.2em;
+  }
+}
+
+/* *********************************
+MAIN
+************************************ */
+
+.main {
+  /* position: absolute; */
+  width: 100%;
+  top: 60%;
+  min-height: 50vh;
+}
+
+.main ul {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.main ul li {
+  display: flex;
+  width: 80%;
+  margin: 50px auto;
+  border: 1px solid #f76028;
+  border-radius: 15px;
+  list-style: none;
+}
+
+.main ul li .item-img {
+  display: flex;
+  width: 25%;
+}
+
+.main ul li .item-img img {
+  width: 90%;
+  margin: 10px auto;
+  padding: 0;
+  object-fit: cover;
+}
+
+.main ul li .item-info {
+  width: 75%;
+}
+
+.main ul li .item-info p {
+  margin: 0;
+}
+
+.main ul .item-info .info1 {
+  width: 80%;
+  font-family: Helvetica;
+  font-size: 2.5rem;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.main ul .item-info .info1 .item-name {
+  font-weight: bold;
+}
+
+.main ul .item-info .info1 .item-description {
+  font-weight: lighter;
+}
+
+.main ul .item-info .info2 {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  padding: 30px;
+  justify-content: space-between;
+}
+
+.main ul .item-info .info2 p {
+  font-family: Helvetica;
+  font-size: 1.7em;
+  color: #313636;
+  font-weight: lighter;
+}
+
+.main ul .item-info .info2 button {
+  width: 85px;
+  background: #f76005;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 1.1em;
+  box-shadow: 1px 1px 7px 2px #888888;
+}
+
+@media screen and (max-width: 500px) {
+  .main ul .item-info .info1 {
+    margin: 10px auto;
+    font-size: 1rem;
+    padding: 0;
+  }
+  .main ul .item-info .info2 {
+    padding: 10px;
+  }
+
+  .main ul .item-info .info2 p {
+    font-size: 1em;
+  }
+  .main ul .item-info .info2 .add-btn {
+    font-size: 1em;
+    width: 65px;
+  }
+}
+
+/* ********************************************
+FOOTER
+************************************************/
+
+footer {
+  width: 100%;
+  height: 10vh;
+  font-family: Roboto;
+  box-shadow: 10px 0 15px -2px #888;
+}
+
+footer .footer-div {
+  width: 80%;
+  display: flex;
+  margin: 0 auto;
+  justify-content: flex-end;
+}
+
+footer .footer-div p {
+  margin: 20px 0;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 0 15px;
+}
+
+footer .footer-div button {
+  width: 140px;
+  margin: 20px 0;
+  background: #f76005;
+  border: none;
+  color: white;
+  text-align: center;
+  box-shadow: 1px 1px 7px 2px #888888;
+  padding: 10px 5px;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+@media screen and (max-width: 500px) {
+  footer .footer-div {
+    width: 75%;
+    justify-content: space-between;
+  }
+
+  footer .footer-div p {
+    font-size: 1em;
+    margin: 23px 0;
+    padding: 0 5px;
+  }
+  footer .footer-div button {
+    width: 120px;
+    margin: 15px 0;
+    font-size: 1em;
+  }
+}
+
+/****************************************
+ SIGN UP 
+ ****************************************/
+
+.sign-up {
+  position: fixed;
+  background-color: rgb(90 88 88 / 51%);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+}
+
+.sign-up .form-area {
+  position: absolute;
+  width: 50%;
+  height: 65vh;
+  background: white;
+  margin: 0 auto;
+  top: 20%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-family: Bebas;
+}
+
+.sign-up .form-area form {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sign-up .form-area form input {
+  width: 90%;
+  text-align: left;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #d1d1d1;
+  box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.07);
+  color: #707070;
+}
+
+.sign-up .form-area .signup-form p {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 2em;
+}
+
+.sign-up .form-area .signup-form .close-btn {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.5em;
+  width: 95%;
+  font-family: Roboto;
+  color: #495050;
+  margin: 5px auto;
+}
+
+.sign-up .form-area .signup-form .fuled {
+  color: #f76028;
+}
+
+.sign-up .form-area .signup-form .up {
+  color: #495050;
+}
+
+.sign-up .form-area .signup-form .text-signup {
+  color: #495050;
+  font-family: Roboto;
+}
+
+.sign-up .form-area .signup-form form .submit-btn {
+  text-align: center;
+  background: #f76028;
+  color: #ffffff;
+  border: none;
+  width: 78%;
+  margin: 5px;
+  padding: 10px;
+  font-size: 1.3em;
+}
+
+.sign-up .form-area .signup-form .signin-link {
+  font-family: none;
+  width: 100%;
+  font-size: 1.5em;
+  margin: 10px auto;
+}
+
+@media screen and (max-width: 500px) {
+  .sign-up .form-area {
+    width: 90%;
+  }
+  .sign-up .form-area .signup-form {
+    font-size: 1em;
+  }
+  .sign-up .form-area .signup-form form input {
+    margin: 10px;
+    padding: 10px;
+  }
+  .sign-up .form-area .signup-form form .submit-btn {
+    font-size: 1em;
+    margin: 0;
+  }
+  .sign-up .form-area .signup-form .signin-link {
+    font-size: 1em;
+    margin: 10px auto;
+  }
+}
+
+/****************************************
+ SIGN IN
+ ****************************************/
+
+.sign-in {
+  position: fixed;
+  background-color: rgb(90 88 88 / 51%);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+}
+
+.sign-in .form-area {
+  position: absolute;
+  width: 50%;
+  height: 57vh;
+  background: white;
+  margin: 0 auto;
+  top: 20%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-family: Bebas;
+}
+
+.sign-in .form-area form {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sign-in .form-area form input {
+  width: 90%;
+  text-align: left;
+  margin: 25px;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #d1d1d1;
+  box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.07);
+  color: #707070;
+}
+
+.sign-in .form-area .signin-form p {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 2em;
+}
+
+.sign-in .form-area .signin-form .close-btn {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.5em;
+  width: 95%;
+  font-family: Roboto;
+  color: #495050;
+  margin: 5px auto;
+}
+
+.sign-in .form-area .signin-form .fuled {
+  color: #f76028;
+}
+
+.sign-in .form-area .signin-form .up {
+  color: #495050;
+}
+
+.sign-in .form-area .signin-form .text-signin {
+  color: #495050;
+  font-family: Roboto;
+}
+
+.sign-in .form-area .signin-form form .submit-btn {
+  text-align: center;
+  background: #f76028;
+  color: #ffffff;
+  border: none;
+  width: 78%;
+  margin: 10px;
+  padding: 10px;
+  font-size: 1.3em;
+}
+
+.sign-in .form-area .signin-form .signin-link {
+  font-family: none;
+  width: 100%;
+  font-size: 1.5em;
+  margin: 15px auto;
+}
+
+@media screen and (max-width: 500px) {
+  .sign-in .form-area {
+    width: 90%;
+  }
+  .sign-in .form-area .signin-form {
+    font-size: 1em;
+  }
+  .sign-in .form-area .signin-form form input {
+    margin: 10px;
+    padding: 10px;
+  }
+  .sign-in .form-area .signin-form form .submit-btn {
+    font-size: 1em;
+    margin: 0;
+  }
+  .sign-in .form-area .signin-form .signin-link {
+    font-size: 1em;
+    margin: 10px auto;
+  }
+}
+
+/****************************************
+ CART
+ ****************************************/
+
+.main .items-text {
+  width: 80%;
+  margin: 35px auto;
+  font-size: 3em;
+  font-family: Roberto;
+  color: #313636;
+}
+
+@media screen and (max-width: 500px) {
+  .main .items-text {
+    font-size: 2em;
+  }
+}
+
+/* ******************************************
+CHECKOUT
+**********************************************/
+
+.bg-checkout {
+  width: 100%;
+  background: #f76028;
+}
+
+.bg-checkout p {
+  width: 80%;
+  margin: 0px auto;
+  font-size: 5em;
+  text-align: center;
+  padding: 100px 0;
+  color: #ffffff;
+  font-family: Roboto;
+}
+
+.bg-checkout-data {
+  width: 100%;
+  margin: 50px 0;
+}
+
+.bg-checkout-data .product-details {
+  width: 70%;
+  margin: 0 auto;
+  font-family: Roboto;
+}
+
+.bg-checkout-data .product-details .shipment-details {
+  font-size: 4em;
+  margin: 0;
+}
+
+.bg-checkout-data .product-details .confirm {
+  margin: 25px auto;
+  font-size: 2em;
+}
+
+.bg-checkout-data .product-details table {
+  margin: 0;
+  font-size: 2em;
+  width: 100%;
+  color: #f76028;
+  border-collapse: collapse;
+}
+
+.bg-checkout-data .product-details table tr {
+  height: 2em;
+}
+
+.bg-checkout-data .product-details table .td-item {
+  width: 60%;
+}
+
+.bg-checkout-data .product-details table .td-quantity {
+  width: 10%;
+}
+
+.bg-checkout-data .product-details table .td-price {
+  width: 10%;
+}
+
+.bg-checkout-data .product-details table .total {
+  border-top: 2px solid #f76028;
+  font-weight: bold;
+  color: #313636;
+  white-space: nowrap;
+}
+
+.bg-checkout-data .address-details {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.bg-checkout-data .address-details form {
+  width: 65%;
+  margin: 50px 0;
+  font-family: Roboto;
+}
+
+.bg-checkout-data .address-details form label {
+  font-size: 2em;
+}
+
+.bg-checkout-data .address-details form input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px 0 35px;
+  font-size: 1.2em;
+  border: none;
+  background: #eaeaea;
+}
+
+.bg-checkout-data .address-details form input.checkout-btn {
+  width: 140px;
+  border: none;
+  font-size: 1em;
+  background-color: #f76028;
+  color: #ffffff;
+  font-family: Roboto;
+}
+
+@media screen and (max-width: 500px) {
+  .bg-checkout p {
+    padding: 80px 0;
+    font-size: 2em;
+  }
+
+  .bg-checkout-data .product-details {
+    width: 85%;
+  }
+
+  .bg-checkout-data .product-details .shipment-details {
+    font-size: 2em;
+  }
+
+  .bg-checkout-data .product-details .confirm {
+    font-size: 1.1em;
+  }
+
+  .bg-checkout-data .product-details table {
+    font-size: 1em;
+  }
+
+  .bg-checkout-data .address-details {
+    width: 85%;
+  }
+
+  .bg-checkout-data .address-details form {
+    margin: 30px 0;
+  }
+
+  .bg-checkout-data .address-details form label {
+    font-size: 1em;
+  }
+
+  .bg-checkout-data .address-details form input {
+    font-size: 0.8em;
+  }
+}
+
+/* ********************************************
+OrderConfirmation
+********************************************** */
+
+.bg-checkout-final {
+  width: 100%;
+  background: #f76028;
+}
+
+.bg-checkout-final p {
+  width: 90%;
+  margin: 0px auto;
+  font-size: 5em;
+  text-align: center;
+  padding: 100px 0;
+  color: #ffffff;
+  font-family: Roboto;
+}
+
+.order-confirmation {
+  width: 100%;
+  font-family: Roboto;
+}
+
+.order-confirmation p {
+  width: 70%;
+  margin: 100px auto;
+  font-size: 32px;
+}
+
+.order-confirmation a {
+  width: 120px;
+  margin: 0 auto;
+  display: block;
+}
+
+.order-confirmation a button {
+  padding: 20px 0px;
+  width: 120px;
+  color: #ffffff;
+  background: #f76028;
+  border: none;
+}
+
+@media screen and (max-width: 500px) {
+  .order-confirmation p {
+    width: 82%;
+    font-size: 1em;
+  }
+
+  .bg-checkout-final p {
+    font-size: 1.5em;
+  }
 }
