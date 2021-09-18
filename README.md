@@ -1,7 +1,7 @@
-# Forum App in React & Redux + Django
+# Mini E-Commerce App in React & Redux + Django
 
 ```
-Forum App, with a frontend built in React & Redux and a backend built in Django API.
+Mini E-Commerce App, with a frontend built in React & Redux and a backend built in Django API.
 ```
 
 ## Live Demo
