@@ -9,7 +9,9 @@ export default function Header() {
         <p class="up">UP</p>
       </div>
       <div class="header-links">
-        <p class="sign-in-link">Sign In</p>
+        <p class="sign-in-link">
+          <a href="/signin">Sign In</a>
+        </p>
         <p class="img">
           <img src={ImageCartLogo} alt="" />
         </p>

@@ -1,27 +1,30 @@
-import React from "react";
-import ImgBackgroundRun from "../assets/img/background-running.png";
+import React, { useEffect, useState } from "react";
 import Item from "../components/common/Item";
+import { fetchItems } from "../reducks/items/operations";
+import { getItems } from "../reducks/items/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import MainImage from "../components/common/MainImage";
 
 export default function Home() {
+  const selector = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const items = getItems(selector);
+
+  useEffect(() => {
+    dispatch(fetchItems());
+  }, []);
+
   return (
     <>
-      <section class="background-section">
-        <div class="inner-div">
-          <p class="high">
-            {" "}
-            HIGH <span>PERFORMANCE</span> SPORTS{" "}
-          </p>
-          <p class="herbal">HERBAL PROTINE</p>
-        </div>
-        <div class="bg-img">
-          <img src={ImgBackgroundRun} alt="" />
-        </div>
-      </section>
+      <MainImage />
       <section class="main">
         <ul>
-          <li>
-            <Item />
-          </li>
+          {items &&
+            items.map((item) => (
+              <li>
+                <Item item={item} key={item.id} />
+              </li>
+            ))}
         </ul>
       </section>
     </>

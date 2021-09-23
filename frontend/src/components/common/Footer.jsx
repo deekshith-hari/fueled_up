@@ -5,7 +5,9 @@ export default function Footer() {
     <footer>
       <div class="footer-div">
         <p>Subtotal: $1000</p>
-        <button>Check your Cart</button>
+        <a href="/cart">
+          <button>Check your Cart</button>
+        </a>
       </div>
     </footer>
   );

@@ -226,6 +226,7 @@ MAIN
   color: white;
   font-size: 1.1em;
   box-shadow: 1px 1px 7px 2px #888888;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 500px) {
@@ -363,6 +364,7 @@ footer .footer-div button {
   font-family: Roboto;
   color: #495050;
   margin: 5px auto;
+  cursor: pointer;
 }
 
 .sign-up .form-area .signup-form .fuled {
@@ -476,6 +478,7 @@ footer .footer-div button {
   font-family: Roboto;
   color: #495050;
   margin: 5px auto;
+  cursor: pointer;
 }
 
 .sign-in .form-area .signin-form .fuled {

@@ -73,7 +73,7 @@ export default function Signup() {
               />
             </form>
             <p class="signin-link">
-              Already a Member? <a href="/">Sign In.</a>
+              Already a Member? <a href="/signin">Sign In.</a>
             </p>
           </div>
         </div>

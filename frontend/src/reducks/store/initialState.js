@@ -8,6 +8,12 @@ const initialState = {
     token: "",
     token_expires_at: "",
   },
+  items: {
+    list: [],
+  },
+  carts: {
+    list: [],
+  },
 };
 
 export default initialState;

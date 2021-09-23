@@ -68,6 +68,91 @@ export default class API {
     return posts;
   };
 
+  // ///////////////////////////////////////
+  // Items
+  // ///////////////////////////////////////
+
+  getItems = async () => {
+    let url = "/items";
+    const items = await api
+      .get(url)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        throw new Error(error);
+      });
+    return items;
+  };
+
+  // ///////////////////////////////////////
+  // Carts
+  // //////////////////////////////////////
+
+  getCarts = async () => {
+    let url = "/carts";
+    const carts = await api
+      .get(url)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        throw new Error(error);
+      });
+    return carts;
+  };
+
+  addCarts = async (token) => {
+    let url = "/carts/add";
+    const savedCart = await api
+      .post(url, {
+        data: {},
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        throw new Error(error);
+      });
+    return savedCart;
+  };
+
+  deleteCarts = async (id, token) => {
+    const response = await api
+      .delete("/carts/delete/" + id + "/", {
+        data: {},
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        throw new Error(error);
+      });
+    return response;
+  };
+
+  updateCarts = async (id, token) => {
+    const response = await api
+      .put("/carts/update/" + id + "/", {
+        data: {},
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        throw new Error(error);
+      });
+    return response;
+  };
   //////////////////////////////////////////
   // Reference Post
   /////////////////////////////////////////

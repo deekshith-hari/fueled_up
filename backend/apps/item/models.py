@@ -16,6 +16,9 @@ class Item(models.Model):
     name = models.CharField(
         'Name', blank=False, null=False, max_length=14, db_index=True
     )
+    description = models.CharField(
+        'Description', blank=True, null=True, max_length=200, db_index=True
+    )
     price = models.DecimalField(
         'Price', blank=False, null=False, max_digits=11, decimal_places=2
     )
