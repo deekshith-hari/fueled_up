@@ -3,12 +3,12 @@ import { fetchCartItemsAction } from "./actions";
 
 const api = new API();
 
-export const fetchCarts = () => {
+export const fetchCarts = (token) => {
   return async (dispatch) => {
     return api
-      .getCarts()
+      .getCarts(token)
       .then((carts) => {
-        dispatch(fetchCartItemsAction(carts));
+        dispatch(fetchCartItemsAction(carts, 100));
       })
       .catch((error) => {
         alert("Failed to connect API: /carts/");

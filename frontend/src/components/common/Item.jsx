@@ -10,7 +10,7 @@ export default function Item({ item }) {
       <div class="item-info">
         <div class="info1">
           <p class="item-name">{item.name}</p>
-          <p class="item-description">{item.description}</p>
+          <p class="item-description"></p>
         </div>
         <div class="info2">
           <p class="price">{item.price}</p>

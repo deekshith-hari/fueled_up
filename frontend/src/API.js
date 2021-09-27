@@ -37,6 +37,7 @@ export default class API {
       });
     return savedPost;
   };
+
   signIn = async (email, password) => {
     const formData = new FormData();
     formData.append("email", email);
@@ -51,6 +52,7 @@ export default class API {
       });
     return savedPost;
   };
+
   getUsers = async (token) => {
     const posts = await api
       .get("/users/", {
@@ -89,10 +91,15 @@ export default class API {
   // Carts
   // //////////////////////////////////////
 
-  getCarts = async () => {
+  getCarts = async (token) => {
     let url = "/carts";
     const carts = await api
-      .get(url)
+      .get(url, {
+        data: {},
+        headers: {
+          Authorization: token,
+        },
+      })
       .then((response) => {
         return response.data;
       })
@@ -102,11 +109,14 @@ export default class API {
     return carts;
   };
 
-  addCarts = async (token) => {
+  addCarts = async (token, quantity, item_id) => {
     let url = "/carts/add";
     const savedCart = await api
       .post(url, {
-        data: {},
+        data: {
+          quantity: quantity,
+          item: item_id,
+        },
         headers: {
           Authorization: token,
         },
@@ -153,9 +163,10 @@ export default class API {
       });
     return response;
   };
-  //////////////////////////////////////////
+
+  ///////////////////////////////////////////
   // Reference Post
-  /////////////////////////////////////////
+  //////////////////////////////////////////
 
   getPosts = async () => {
     const posts = await api
@@ -168,6 +179,7 @@ export default class API {
       });
     return posts;
   };
+
   addPost = async (name, body, image) => {
     const formData = new FormData();
     formData.append("name", name);
@@ -183,6 +195,7 @@ export default class API {
       });
     return savedPost;
   };
+
   deletePost = async (id) => {
     const response = await api
       .delete("/posts/delete/" + id + "/")

@@ -13,6 +13,7 @@ const initialState = {
   },
   carts: {
     list: [],
+    subtotal: 0,
   },
 };
 

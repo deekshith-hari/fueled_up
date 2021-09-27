@@ -1,8 +1,9 @@
 export const FETCH_CART = "FETCH_CART";
-export const fetchCartItemsAction = (carts) => {
+export const fetchCartItemsAction = (carts, subtotal) => {
   return {
     type: "FETCH_CART",
-    payload: carts,
+    list: carts,
+    subtotal: subtotal,
   };
 };
 export const ADD_CART = "ADD_CART";
