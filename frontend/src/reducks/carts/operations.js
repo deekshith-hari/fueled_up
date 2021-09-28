@@ -8,6 +8,7 @@ export const fetchCarts = (token) => {
     return api
       .getCarts(token)
       .then((carts) => {
+        console.log(carts);
         dispatch(fetchCartItemsAction(carts, 100));
       })
       .catch((error) => {

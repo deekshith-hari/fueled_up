@@ -18,7 +18,8 @@ function Signin() {
     setPassword(event.target.value);
   };
 
-  const signInButton = () => {
+  const submitButton = (event) => {
+    event.preventDefault();
     dispatch(signIn(email, password));
     setEmail("");
     setPassword("");
@@ -35,7 +36,7 @@ function Signin() {
               FUELED <span class="up"> UP </span>
             </p>
             <p class="text-signup">SIGN IN</p>
-            <form action="/">
+            <form onSubmit={submitButton}>
               <input
                 type="text"
                 name="email"
@@ -53,9 +54,8 @@ function Signin() {
               <input
                 class="submit-btn"
                 type="submit"
-                name="signup"
+                name="signin"
                 value="SIGN IN"
-                onClick={signInButton}
               />
             </form>
             <p class="signin-link">

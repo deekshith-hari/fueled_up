@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router";
 import Home from "./containers/Home";
 import Signin from "./containers/Signin";
@@ -6,6 +7,8 @@ import Signup from "./containers/Signup";
 import Checkout from "./containers/Checkout";
 import Cart from "./containers/Cart";
 import Orderconfirm from "./containers/Orderconfirm";
+import { getUser } from "./reducks/user/selectors";
+import { fetchUserFromLocalStorage } from "./reducks/user/operations";
 
 const Router = () => {
   return (

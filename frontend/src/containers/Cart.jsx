@@ -9,7 +9,7 @@ import { getUser } from "../reducks/user/selectors";
 export default function Cart() {
   const selector = useSelector((state) => state);
   const dispatch = useDispatch();
-  const cart = getCarts(selector);
+  const carts = getCarts(selector);
   const user = getUser(selector);
 
   useEffect(() => {
@@ -25,7 +25,10 @@ export default function Cart() {
         <p class="items-text">Your items</p>
         <ul>
           <li>
-            <CartItem cart={cart} key={cart.id} />
+            {carts &&
+              carts.map((cart) => {
+                <CartItem cart={cart.item} key={cart.item.id} />;
+              })}
           </li>
         </ul>
       </section>

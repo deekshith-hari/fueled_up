@@ -2,4 +2,4 @@
 # To send the request and get the result, click the 'Send Request' 
 GET http://127.0.0.1:8000/users/ HTTP/1.1
 content-type: application/json
-Authorization: 	84b505e383c67d36f50c8490a5ea8709cb57dbc49b5ce2ba48014cc504f6
+Authorization: 	75bb75b7700e86b5b39a028f9b28089f6cea0b4e48c1d7f72000b42072c9
