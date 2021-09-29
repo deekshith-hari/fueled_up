@@ -15,6 +15,8 @@ export default function Cart() {
   useEffect(() => {
     if (user.token != "") {
       dispatch(fetchCarts(user.token));
+      console.log("test");
+      console.log(carts);
     }
   }, [user]);
 
@@ -24,12 +26,12 @@ export default function Cart() {
       <section class="main">
         <p class="items-text">Your items</p>
         <ul>
-          <li>
-            {carts &&
-              carts.map((cart) => {
-                <CartItem cart={cart.item} key={cart.item.id} />;
-              })}
-          </li>
+          {carts &&
+            carts.map((cart) => (
+              <li>
+                <CartItem cart={cart.item} key={cart.item.id} />
+              </li>
+            ))}
         </ul>
       </section>
     </>

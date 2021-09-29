@@ -32,4 +32,3 @@ class Item(models.Model):
         'Updated At', blank=True, auto_now=True
     )
 
-    
