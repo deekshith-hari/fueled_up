@@ -9,7 +9,7 @@ import {
 export default function Item({ item, selected_count }) {
   const dispatch = useDispatch();
   const clickAddCart = () => {
-    dispatch(addCart(item));
+    dispatch(addCart(item.id, selected_count));
   };
 
   const clickPlusCart = () => {

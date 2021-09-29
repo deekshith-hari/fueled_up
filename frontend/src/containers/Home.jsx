@@ -4,9 +4,9 @@ import { fetchItems } from "../reducks/items/operations";
 import { getItems } from "../reducks/items/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import MainImage from "../components/common/MainImage";
-import { getCarts } from "../reducks/carts/selectors";
+import { getCarts, getSubtotal } from "../reducks/carts/selectors";
 
-export default function Home() {
+const Home = () => {
   const selector = useSelector((state) => state);
   const dispatch = useDispatch();
   const items = getItems(selector);
@@ -20,9 +20,7 @@ export default function Home() {
     let selected_count = 0;
     if (carts[item.id] && carts[item.id].selected_count) {
       selected_count = carts[item.id].selected_count;
-      // return selected_count;
     }
-    console.log("test");
 
     return (
       <li>
@@ -39,4 +37,6 @@ export default function Home() {
       </section>
     </>
   );
-}
+};
+
+export default Home;

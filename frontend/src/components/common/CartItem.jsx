@@ -5,7 +5,7 @@ export default function CartItem({ cart }) {
   return (
     <div>
       <div class="item-img">
-        <img src={cart.image} alt="" />
+        <img src={cart.image.url} alt="" />
       </div>
       <div class="item-info">
         <div class="info1">

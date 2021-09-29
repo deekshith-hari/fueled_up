@@ -30,19 +30,3 @@ export const decreaseCartAction = (carts, subtotal) => {
     subtotal: subtotal,
   };
 };
-export const DELETE_CART = "DELETE_CART";
-export const deleteCartsAction = (carts, subtotal) => {
-  return {
-    type: "DELETE_CART",
-    list: carts,
-    subtotal: subtotal,
-  };
-};
-export const UPDATE_CART = "UPDATE_CART";
-export const updateCartAction = (carts, subtotal) => {
-  return {
-    type: "DELETE_POST",
-    list: carts,
-    subtotal: subtotal,
-  };
-};

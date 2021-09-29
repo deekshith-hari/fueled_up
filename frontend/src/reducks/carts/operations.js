@@ -23,13 +23,14 @@ export const fetchCarts = (token) => {
   };
 };
 
-export const addCart = (item) => {
+export const addCart = (item_id) => {
   return async (dispatch, getState) => {
-    let prevCarts = getState().carts.list;
-    prevCarts[item.id] = { item: item, selected_count: 1 };
-    const subtotal = calculateSubtotal(prevCarts);
-    setToLocalStorage(prevCarts);
-    dispatch(addCartAction(prevCarts, subtotal));
+    return api.addCarts(item_id).then((item) => {
+      let prevCarts = getState().carts.list;
+      prevCarts[item.id] = { item: item, selected_count: 1 };
+      const subtotal = calculateSubtotal(prevCarts);
+      dispatch(addCartAction(prevCarts, subtotal));
+    });
   };
 };
 

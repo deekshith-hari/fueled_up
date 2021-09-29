@@ -13,7 +13,12 @@ export const CartsReducer = (state = initialState.carts, action) => {
         list: action.list,
         subtotal: action.subtotal,
       };
-    case Actions.DELETE_CART:
+    case Actions.INCREASE_CART:
+      return {
+        list: action.list,
+        subtotal: action.subtotal,
+      };
+    case Actions.DECREASE_CART:
       return {
         list: action.list,
         subtotal: action.subtotal,

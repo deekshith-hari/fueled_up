@@ -1,4 +1,5 @@
 import axios from "axios";
+const LOGIN_USER_KEY = "LOGIN_USER_KEY";
 
 var baseURL;
 if (
@@ -16,6 +17,21 @@ const api = axios.create({
     "Content-Type": "application/json",
   },
 });
+
+api.interceptors.request.use(
+  (config) => {
+    if (localStorage.getItem(LOGIN_USER_KEY)) {
+      config.headers.common["Authorization"] = JSON.parse(
+        localStorage.getItem(LOGIN_USER_KEY)
+      ).token;
+    }
+
+    return config;
+  },
+  (err) => {
+    console.error(err);
+  }
+);
 
 export default class API {
   //////////////////////////////
@@ -39,11 +55,11 @@ export default class API {
   };
 
   signIn = async (email, password) => {
-    const formData = new FormData();
-    formData.append("email", email);
-    formData.append("password", password);
     const savedPost = await api
-      .post("/users/signin/", formData)
+      .post("/users/signin/", {
+        email: email,
+        password: password,
+      })
       .then((response) => {
         return response.data;
       })
@@ -53,14 +69,9 @@ export default class API {
     return savedPost;
   };
 
-  getUsers = async (token) => {
+  getUsers = async () => {
     const posts = await api
-      .get("/users/", {
-        data: {},
-        headers: {
-          Authorization: token,
-        },
-      })
+      .get("/users/")
       .then((response) => {
         return response.data;
       })
@@ -91,15 +102,9 @@ export default class API {
   // Carts
   // //////////////////////////////////////
 
-  getCarts = async (token) => {
-    let url = "/carts";
+  getCarts = async () => {
     const carts = await api
-      .get(url, {
-        data: {},
-        headers: {
-          Authorization: token,
-        },
-      })
+      .get("carts/")
       .then((response) => {
         return response.data;
       })
@@ -109,17 +114,11 @@ export default class API {
     return carts;
   };
 
-  addCarts = async (token, quantity, item_id) => {
-    let url = "/carts/add";
+  addCarts = async (item_id) => {
     const savedCart = await api
-      .post(url, {
-        data: {
-          quantity: quantity,
-          item: item_id,
-        },
-        headers: {
-          Authorization: token,
-        },
+      .post("/carts/add/", {
+        item: item_id,
+        quantity: 1,
       })
       .then((response) => {
         return response.data;
@@ -128,40 +127,6 @@ export default class API {
         throw new Error(error);
       });
     return savedCart;
-  };
-
-  deleteCarts = async (id, token) => {
-    const response = await api
-      .delete("/carts/delete/" + id + "/", {
-        data: {},
-        headers: {
-          Authorization: token,
-        },
-      })
-      .then((response) => {
-        return response.data;
-      })
-      .catch((error) => {
-        throw new Error(error);
-      });
-    return response;
-  };
-
-  updateCarts = async (id, token) => {
-    const response = await api
-      .put("/carts/update/" + id + "/", {
-        data: {},
-        headers: {
-          Authorization: token,
-        },
-      })
-      .then((response) => {
-        return response.data;
-      })
-      .catch((error) => {
-        throw new Error(error);
-      });
-    return response;
   };
 
   ///////////////////////////////////////////
