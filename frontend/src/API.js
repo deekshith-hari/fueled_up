@@ -129,6 +129,32 @@ export default class API {
     return savedCart;
   };
 
+  updateCarts = async (cart_id, quantity) => {
+    const savedCart = await api
+      .put("/carts/update/" + cart_id + "/", {
+        quantity: quantity,
+      })
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        throw new Error(error);
+      });
+    return savedCart;
+  };
+
+  deleteCarts = async (cart_id) => {
+    const response = await api
+      .delete("/carts/delete/" + cart_id + "/")
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        throw new Error(error);
+      });
+    return response;
+  };
+
   ///////////////////////////////////////////
   // Reference Post
   //////////////////////////////////////////
