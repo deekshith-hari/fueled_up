@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCarts, getSubtotal } from "../reducks/carts/selectors";
 
 export default function Checkout() {
+  const selector = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  const subtotal = getSubtotal(selector);
+  const carts = getCarts(selector);
+
   return (
     <>
       <section class="bg-checkout-data">

@@ -1,11 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addCart,
+  increaseCart,
+  decreaseCart,
+} from "../../reducks/carts/operations";
+import { getCarts, getSubtotal } from "../../reducks/carts/selectors";
 
 export default function CartItem({ cart }) {
-  // console.log(cart.name);
+  const selector = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const carts = getCarts(selector);
+  const subtotal = getSubtotal(selector);
+  const [particularCart, setParticularCart] = useState(null);
+
+  useEffect(() => {
+    if (carts != undefined && carts.length > 0) {
+      setParticularCart(carts[0]);
+    } else {
+      setParticularCart(null);
+    }
+  }, [carts, subtotal]);
+
+  const clickPlusCart = () => {
+    dispatch(increaseCart(particularCart.id));
+  };
+  const clickMinusCart = () => {
+    dispatch(decreaseCart(particularCart.id));
+  };
+
+  useEffect(() => {
+    console.log(carts);
+  }, []);
+
   return (
-    <div>
+    <>
       <div class="item-img">
-        <img src={cart.image.url} alt="" />
+        <img
+          src={"https://res.cloudinary.com/dop22f4ta/" + cart.image}
+          alt=""
+        />
       </div>
       <div class="item-info">
         <div class="info1">
@@ -14,9 +48,19 @@ export default function CartItem({ cart }) {
         </div>
         <div class="info2">
           <p class="price">${cart.price}</p>
-          <button class="add-btn">Add +</button>
+          {particularCart && particularCart.quantity > 0 && (
+            <div class="add-btn">
+              <span class="minus" onClick={clickMinusCart}>
+                －
+              </span>
+              <span class="count">{particularCart.quantity} </span>
+              <span class="plus" onClick={clickPlusCart}>
+                +
+              </span>
+            </div>
+          )}
         </div>
       </div>
-    </div>
+    </>
   );
 }
