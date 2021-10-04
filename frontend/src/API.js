@@ -155,6 +155,40 @@ export default class API {
     return response;
   };
 
+  ////////////////////////////////////////////
+  // Order/Checkout
+  // ////////////////////////////////////////
+
+  orderAdd = async (
+    total_price,
+    full_name,
+    phone,
+    address,
+    pin,
+    apt,
+    city,
+    state
+  ) => {
+    const order = await api
+      .post("/orders/add/", {
+        total_price: total_price,
+        full_name: full_name,
+        phone: phone,
+        address: address,
+        pin: pin,
+        apt: apt,
+        city: city,
+        state: state,
+      })
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        throw new Error(error);
+      });
+    return order;
+  };
+
   ///////////////////////////////////////////
   // Reference Post
   //////////////////////////////////////////

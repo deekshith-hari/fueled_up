@@ -2,7 +2,7 @@
 # To send the request and get the result, click the 'Send Request' 
 POST http://127.0.0.1:8000/orders/add/ HTTP/1.1
 content-type: application/json
-Authorization: 	74aa6fd4b80ddaa720ae86510c4fc251f3b242bed9d224ab07989ac64dcc
+Authorization: 	ed38e9bd48639d761acfaa10174aa871df1bb9b77efa6849581ac530edb2
 
 {
     "total_price": "99.90",

@@ -15,6 +15,17 @@ const initialState = {
     list: [],
     subtotal: 0,
   },
+  orders: {
+    total_price: "",
+    full_name: "",
+    phone: "",
+    address: "",
+    pin: "",
+    apt: "",
+    city: "",
+    state: "",
+    subtotal: 0,
+  },
 };
 
 export default initialState;
