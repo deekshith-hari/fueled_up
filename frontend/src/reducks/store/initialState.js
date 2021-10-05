@@ -15,8 +15,8 @@ const initialState = {
     list: [],
     subtotal: 0,
   },
-  orders: {
-    total_price: "",
+  order: {
+    total_price: 0,
     full_name: "",
     phone: "",
     address: "",
@@ -24,7 +24,6 @@ const initialState = {
     apt: "",
     city: "",
     state: "",
-    subtotal: 0,
   },
 };
 

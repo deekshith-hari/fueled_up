@@ -29,10 +29,6 @@ export default function CartItem({ cart }) {
     dispatch(decreaseCart(particularCart.id));
   };
 
-  useEffect(() => {
-    console.log(carts);
-  }, []);
-
   return (
     <>
       <div class="item-img">

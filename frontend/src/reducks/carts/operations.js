@@ -98,10 +98,6 @@ export const decreaseCart = (cart_id) => {
   };
 };
 
-const setToLocalStorage = (carts) => {
-  localStorage.setItem(CARTS_KEY, JSON.stringify(carts));
-};
-
 const calculateSubtotal = (carts) => {
   let subtotal = 0;
   for (let key in carts) {

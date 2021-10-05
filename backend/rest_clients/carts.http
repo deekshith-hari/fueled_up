@@ -2,4 +2,4 @@
 # To send the request and get the result, click the 'Send Request' 
 GET http://127.0.0.1:8000/carts/ HTTP/1.1
 content-type: application/json
-Authorization: 	75bb75b7700e86b5b39a028f9b28089f6cea0b4e48c1d7f72000b42072c9
+Authorization: 	648943c258dc01917fea0d4a5cc6e2041a07d0787f19acf53986ddf20724

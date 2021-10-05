@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import API from "../API";
 import { getCarts, getSubtotal } from "../reducks/carts/selectors";
+import { fetchCarts } from "../reducks/carts/operations";
+const api = new API();
 
 export default function Checkout() {
   const selector = useSelector((state) => state);
@@ -9,6 +12,75 @@ export default function Checkout() {
   const subtotal = getSubtotal(selector);
   const carts = getCarts(selector);
 
+  const [full_name, setFullName] = useState(""),
+    [phone, setPhone] = useState(""),
+    [address, setAddress] = useState(""),
+    [pincode, setPincode] = useState(""),
+    [apt, setApt] = useState(""),
+    [city, setCity] = useState(""),
+    [state, setState] = useState(""),
+    [totalitem, setTotalItem] = useState(0);
+
+  useEffect(() => {
+    dispatch(fetchCarts());
+  }, []);
+
+  useEffect(() => {
+    let arr = [];
+    if (carts != undefined && carts.length > 0) {
+      for (let key in carts) {
+        arr.push(carts[key].quantity);
+      }
+      let sum = arr.reduce(function (a, b) {
+        return a + b;
+      }, 0);
+      setTotalItem(sum);
+    }
+  }, [carts]);
+
+  const inputFullname = (e) => {
+    setFullName(e.target.value);
+  };
+
+  const inputPhoneNumber = (e) => {
+    setPhone(e.target.value);
+  };
+
+  const inputAddress = (e) => {
+    setAddress(e.target.value);
+  };
+
+  const inputPin = (e) => {
+    setPincode(e.target.value);
+  };
+
+  const inputApt = (e) => {
+    setApt(e.target.value);
+  };
+
+  const inputCity = (e) => {
+    setCity(e.target.value);
+  };
+
+  const inputState = (e) => {
+    setState(e.target.value);
+  };
+
+  const orderButton = (e) => {
+    let params = {
+      total_price: subtotal,
+      full_name: full_name,
+      phone: phone,
+      address: address,
+      pincode: pincode,
+      apt: apt,
+      city: city,
+      state: state,
+    };
+    api.orderAdd(params);
+    // e.preventDefault();
+  };
+
   return (
     <>
       <section class="bg-checkout-data">
@@ -16,26 +88,18 @@ export default function Checkout() {
           <p class="shipment-details">Shipment Details</p>
           <p class="confirm">Please check your items and confirm it</p>
           <table>
-            <tr>
-              <td class="td-item">Yellow Sea Moss</td>
-              <td class="td-quantity">1</td>
-              <td class="td-price">$380.99</td>
-            </tr>
-            <tr>
-              <td class="td-item">Burdock root</td>
-              <td class="td-quantity">2</td>
-              <td class="td-price">$120.99</td>
-            </tr>
-            <tr>
-              <td class="td-item">Yellow Sea Moss</td>
-              <td class="td-quantity">1</td>
-              <td class="td-price">$380.99</td>
-            </tr>
-
+            {carts &&
+              carts.map((cart) => (
+                <tr>
+                  <td class="td-item">{cart.item.name}</td>
+                  <td class="td-quantity">{cart.quantity}</td>
+                  <td class="td-price">${cart.item.price}</td>
+                </tr>
+              ))}
             <tr class="total">
               <td class="td-item">Total</td>
-              <td class="td-quantity">3</td>
-              <td class="td-price">$649.97</td>
+              <td class="td-quantity">{totalitem}</td>
+              <td class="td-price">${subtotal}</td>
             </tr>
           </table>
         </div>
@@ -47,49 +111,68 @@ export default function Checkout() {
               name="name"
               id="name"
               placeholder="Enter Recipients name"
+              onChange={inputFullname}
+              required
             />
 
-            <label for="name">Phone Number</label>
+            <label for="phone">Phone Number</label>
             <input
               type="text"
-              name="name"
+              name="phone"
               id="name"
               placeholder="Enter Phone Number"
+              onChange={inputPhoneNumber}
+              required
             />
 
-            <label for="name">Street address or P.O. Box</label>
+            <label for="address">Street address or P.O. Box</label>
             <input
               type="text"
-              name="name"
+              name="address"
               id="name"
               placeholder="Enter Street address or P.O. Box"
+              onChange={inputAddress}
+              required
             />
 
-            <label for="name">PIN Code</label>
+            <label for="pin">PIN Code</label>
             <input
               type="text"
-              name="name"
+              name="pin"
               id="name"
               placeholder="Enter PIN Code"
+              onChange={inputPin}
+              required
             />
 
-            <label for="name">Apt, suit, unit, building, floor, etc</label>
+            <label for="apt">Apt, suit, unit, building, floor, etc</label>
             <input
               type="text"
-              name="name"
+              name="apt"
               id="name"
               placeholder="Enter Apt, suit, unit, building, floor, etc"
+              onChange={inputApt}
+              required
             />
 
-            <label for="name">City</label>
-            <input type="text" name="name" id="name" placeholder="Enter City" />
-
-            <label for="name">State</label>
+            <label for="city">City</label>
             <input
               type="text"
-              name="name"
+              name="city"
+              id="name"
+              placeholder="Enter City"
+              onChange={inputCity}
+              required
+            />
+
+            <label for="state">State</label>
+            <input
+              type="text"
+              name="state"
               id="name"
               placeholder="Enter State"
+              onChange={inputState}
+              required
             />
 
             <input
@@ -97,6 +180,7 @@ export default function Checkout() {
               name="submit"
               value="SUBMIT"
               class="checkout-btn"
+              onClick={orderButton}
             />
           </form>
         </div>
