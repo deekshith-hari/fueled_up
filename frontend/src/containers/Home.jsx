@@ -13,7 +13,9 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(fetchItems());
-    dispatch(fetchCarts());
+    if (localStorage.getItem("LOGIN_USER_KEY")) {
+      dispatch(fetchCarts());
+    }
   }, []);
 
   return (

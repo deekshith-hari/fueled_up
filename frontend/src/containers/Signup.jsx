@@ -38,7 +38,9 @@ export default function Signup() {
       <section class="sign-up">
         <div class="form-area">
           <div class="signup-form">
-            <p class="close-btn">x</p>
+            <a href="/">
+              <p class="close-btn">x</p>
+            </a>
             <p class="fuled">
               FUELED <span class="up"> UP </span>
             </p>
