@@ -39,12 +39,12 @@ export default class API {
   /////////////////////////////
 
   signUp = async (user_name, email, password) => {
-    const formData = new FormData();
-    formData.append("user_name", user_name);
-    formData.append("email", email);
-    formData.append("password", password);
     const savedPost = await api
-      .post("/users/signup/", formData)
+      .post("/users/signup/", {
+        user_name: user_name,
+        email: email,
+        password: password,
+      })
       .then((response) => {
         return response.data;
       })

@@ -2,18 +2,16 @@
 # To send the request and get the result, click the 'Send Request' 
 POST http://127.0.0.1:8000/orders/add/ HTTP/1.1
 content-type: application/json
-Authorization: 	ed38e9bd48639d761acfaa10174aa871df1bb9b77efa6849581ac530edb2
+Authorization: 	648943c258dc01917fea0d4a5cc6e2041a07d0787f19acf53986ddf20724
 
 {
-    "total_price": "99.90",
+    "total_price": 99.90,
     "full_name": "test100011",
     "address_line1": "teat address",
     "address_line2": "test address2",
     "city": "test city",
     "state": "test state",
-    "postal_code": 560008,
+    "postal_code": "560008",
     "country": "India",
-    "telephone": 67555678,
-    "created_at": "2021-09-10T18:52:32.141898Z",
-    "updated_at": "2021-09-10T18:52:32.141973Z"
+    "telephone": "67555678"
 }

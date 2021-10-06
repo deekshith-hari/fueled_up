@@ -61,7 +61,7 @@ export const signIn = (email, password) => {
 export const signOut = () => {
   return async (dispatch) => {
     dispatch(signOutAction());
-    localStorage.setItem(LOGIN_USER_KEY, {});
+    localStorage.removeItem(LOGIN_USER_KEY);
     dispatch(push("/"));
   };
 };

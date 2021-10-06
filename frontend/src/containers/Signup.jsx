@@ -24,7 +24,8 @@ export default function Signup() {
     setPassword(event.target.value);
   };
 
-  const signUpButton = () => {
+  const signUpButton = (e) => {
+    e.preventDefault();
     dispatch(signUp(user_name, email, password));
     setUserName("");
     setEmail("");

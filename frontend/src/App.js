@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Router from "./Router";
 import "./assets/style.css";
@@ -7,22 +7,30 @@ import Footer from "./components/common/Footer";
 import { getUser } from "./reducks/user/selectors";
 import { fetchUserFromLocalStorage } from "./reducks/user/operations";
 import { getSubtotal } from "./reducks/carts/selectors";
+import { BrowserRouter, withRouter } from "react-router-dom";
+
+let pageUrl = window.location.toString();
 
 function App() {
+  const [showFooter, setShowFooter] = useState(true);
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
   const user = getUser(selector);
   const subtotal = getSubtotal(selector);
   useEffect(() => {
+    if (
+      pageUrl.includes("checkout") ||
+      pageUrl.includes("order-confirmation")
+    ) {
+      setShowFooter(false);
+    }
     dispatch(fetchUserFromLocalStorage());
-    console.log(user);
-    console.log(subtotal);
   }, []);
   return (
     <>
       <Header />
       <Router />
-      <Footer price={subtotal} />
+      {showFooter && <Footer price={subtotal} />}
     </>
   );
 }

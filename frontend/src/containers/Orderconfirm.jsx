@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Orderconfirm() {
+export default function OrderConfirm() {
   return (
     <>
       <section class="bg-checkout-final">
@@ -13,7 +13,7 @@ export default function Orderconfirm() {
           be contacting with you to tell next steps
         </p>
 
-        <a href="/Home">
+        <a href="/">
           <button>Back to Home</button>
         </a>
       </section>

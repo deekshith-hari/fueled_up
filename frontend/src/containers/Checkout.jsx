@@ -70,15 +70,16 @@ export default function Checkout() {
     let params = {
       total_price: subtotal,
       full_name: full_name,
-      phone: phone,
-      address: address,
-      pincode: pincode,
-      apt: apt,
+      address_line1: address,
+      address_line2: apt,
       city: city,
       state: state,
+      postal_code: pincode,
+      country: "US",
+      telephone: phone,
     };
-    api.orderAdd(params);
-    // e.preventDefault();
+    api.orderAdd(params).then(window.location.replace("order-confirmation"));
+    e.preventDefault();
   };
 
   return (
