@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function OrderConfirm() {
+function OrderConfirm() {
   return (
     <>
       <section class="bg-checkout-final">
@@ -20,3 +20,5 @@ export default function OrderConfirm() {
     </>
   );
 }
+
+export default OrderConfirm;
