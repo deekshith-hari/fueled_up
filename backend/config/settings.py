@@ -29,9 +29,10 @@ SECRET_KEY = 'django-insecure-ov#r^^&xv&^0vmc(zj&h_t^$*52@8jicn=%*z*@s-=li!s_p@=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'fueledup-backend-production.herokuapp.com']
+# ALLOWED_HOSTS = ['127.0.0.1', 'fueledup-backend-production.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOWED_ORIGINS = ['http://localhost:3000', 'http://127.0.0.1:3000', 'https://fueledup-frontend-production.herokuapp.com']
+# CORS_ALLOWED_ORIGINS = ['http://localhost:3000', 'http://127.0.0.1:3000', 'https://fueledup-frontend-production.herokuapp.com']
 
 # Application definition
 
