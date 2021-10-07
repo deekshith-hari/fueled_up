@@ -39,11 +39,13 @@ export default function Header() {
             <a href="/signin">Sign In</a>
           )}
         </p>
-        <p class="img">
-          <a href="/cart">
-            <img src={ImageCartLogo} alt="" />
-          </a>
-        </p>
+        {checkUser && (
+          <p class="img">
+            <a href="/cart">
+              <img src={ImageCartLogo} alt="" />
+            </a>
+          </p>
+        )}
       </div>
     </header>
   );

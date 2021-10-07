@@ -3,9 +3,14 @@ import Home from "./Home";
 import { signIn } from "../reducks/user/operations";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { push } from "connected-react-router";
 
 function Signin() {
   const dispatch = useDispatch();
+
+  const closeButton = () => {
+    dispatch(push("/"));
+  };
 
   const [email, setEmail] = useState(""),
     [password, setPassword] = useState("");
@@ -31,9 +36,9 @@ function Signin() {
       <section class="sign-up">
         <div class="form-area">
           <div class="signup-form">
-            <a href="/">
+            <span onClick={closeButton}>
               <p class="close-btn">x</p>
-            </a>
+            </span>
             <p class="fuled">
               FUELED <span class="up"> UP </span>
             </p>

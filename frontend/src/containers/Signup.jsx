@@ -2,11 +2,15 @@ import React from "react";
 import Home from "./Home";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-
+import { push } from "connected-react-router";
 import { signUp } from "../reducks/user/operations";
 
 export default function Signup() {
   const dispatch = useDispatch();
+
+  const closeButton = () => {
+    dispatch(push("/"));
+  };
 
   const [user_name, setUserName] = useState(""),
     [email, setEmail] = useState(""),
@@ -38,9 +42,9 @@ export default function Signup() {
       <section class="sign-up">
         <div class="form-area">
           <div class="signup-form">
-            <a href="/">
+            <span onClick={closeButton}>
               <p class="close-btn">x</p>
-            </a>
+            </span>
             <p class="fuled">
               FUELED <span class="up"> UP </span>
             </p>

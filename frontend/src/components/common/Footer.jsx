@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 export default function Footer({ price }) {
   let pageUrl = window.location.toString();
   const [showCheckoutButton, setShowCheckoutButton] = useState(true);
+  const key = localStorage.getItem("LOGIN_USER_KEY");
 
   useEffect(() => {
     if (pageUrl.includes("cart")) {
@@ -12,18 +13,20 @@ export default function Footer({ price }) {
 
   return (
     <footer>
-      <div class="footer-div">
-        <p>Subtotal: ${price}</p>
-        {showCheckoutButton ? (
-          <a href="/cart">
-            <button>Check your Cart</button>
-          </a>
-        ) : (
-          <a href="/checkout">
-            <button>Checkout</button>
-          </a>
-        )}
-      </div>
+      {key != null && (
+        <div class="footer-div">
+          <p>Subtotal: ${price}</p>
+          {showCheckoutButton ? (
+            <a href="/cart">
+              <button>Check your Cart</button>
+            </a>
+          ) : (
+            <a href="/checkout">
+              <button>Checkout</button>
+            </a>
+          )}
+        </div>
+      )}
     </footer>
   );
 }
