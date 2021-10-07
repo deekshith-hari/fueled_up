@@ -32,7 +32,9 @@ export default function Header() {
       <div class="header-links">
         <p class="sign-in-link">
           {checkUser ? (
-            <span onClick={signOutButton}>Logout</span>
+            <span class="logout" onClick={signOutButton}>
+              Logout
+            </span>
           ) : (
             <a href="/signin">Sign In</a>
           )}
