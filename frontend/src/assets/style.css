@@ -18,6 +18,11 @@ header {
   justify-content: space-between;
   font-family: Bebas Neue;
   width: 100%;
+  text-decoration: none;
+}
+
+header a {
+  text-decoration: none;
 }
 
 header .icon-text {
@@ -37,6 +42,7 @@ header .icon-text .fuled {
 header .icon-text .up {
   margin: 0;
   padding: 10px 0px;
+  color: #495050;
 }
 
 header .header-links {
@@ -54,6 +60,10 @@ header .header-links p {
 header .header-links .sign-in-link {
   padding: 5px 20px;
   font-family: Roboto;
+}
+
+header .header-links .sign-in-link a {
+  color: #495050;
 }
 
 header .header-links .img img {
@@ -211,6 +221,16 @@ MAIN
   justify-content: space-between;
 }
 
+.main ul .item-info .info2 .add-btn {
+  border: 1px solid #f76005;
+  padding: 5px 10px;
+}
+
+.main ul .item-info .info2 span {
+  padding: 5px;
+  cursor: pointer;
+}
+
 .main ul .item-info .info2 p {
   font-family: Helvetica;
   font-size: 1.7em;
@@ -285,6 +305,7 @@ footer .footer-div button {
   display: inline-block;
   text-decoration: none;
   font-size: 0.9em;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 500px) {
@@ -654,6 +675,7 @@ CHECKOUT
   background-color: #f76028;
   color: #ffffff;
   font-family: Roboto;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 500px) {

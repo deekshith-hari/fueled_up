@@ -20,10 +20,12 @@ export default function Header() {
 
   return (
     <header>
-      <div class="icon-text">
-        <p class="fuled">FUELED</p>
-        <p class="up">UP</p>
-      </div>
+      <a href="/">
+        <div class="icon-text">
+          <p class="fuled">FUELED</p>
+          <p class="up">UP</p>
+        </div>
+      </a>
       <div class="header-links">
         <p class="sign-in-link">
           {checkUser ? (
