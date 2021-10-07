@@ -16,7 +16,7 @@ const Router = () => {
         <Route exact path={"/signup"} component={Signup} />
         <Route exact path={"/checkout"} component={Checkout} />
         <Route exact path={"/cart"} component={Cart} />
-        <Route exact path={"/order-confirmation"} component={OrderConfirm} />
+        {/* <Route exact path={"/order-confirmation"} component={OrderConfirm} /> */}
       </Switch>
     </>
   );
