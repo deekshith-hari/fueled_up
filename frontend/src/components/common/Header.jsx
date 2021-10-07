@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ImageCartLogo from "../../assets/img/cart-icon.svg";
 import { signOut } from "../../reducks/user/operations";
 import { useDispatch } from "react-redux";
+import { push } from "connected-react-router";
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -10,6 +11,8 @@ export default function Header() {
 
   const signOutButton = () => {
     dispatch(signOut());
+    setCheckUser(false);
+    dispatch(push("/signin"));
   };
 
   useEffect(() => {
@@ -29,9 +32,7 @@ export default function Header() {
       <div class="header-links">
         <p class="sign-in-link">
           {checkUser ? (
-            <a href="/signin" onClick={signOutButton}>
-              Logout
-            </a>
+            <span onClick={signOutButton}>Logout</span>
           ) : (
             <a href="/signin">Sign In</a>
           )}
