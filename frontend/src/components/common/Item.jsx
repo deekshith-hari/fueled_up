@@ -51,7 +51,7 @@ export default function Item({ item }) {
           <p class="item-description">{item.description}</p>
         </div>
         <div class="info2">
-          <p class="price">{item.price}</p>
+          <p class="price">$ {item.price}</p>
           {particularCart && particularCart.quantity > 0 ? (
             <div class="add-btn">
               <span class="minus" onClick={clickMinusCart}>
