@@ -5,7 +5,7 @@ import Signin from "./containers/Signin";
 import Signup from "./containers/Signup";
 import Checkout from "./containers/Checkout";
 import Cart from "./containers/Cart";
-import OrderConfirm from "./containers/OrderConfirm";
+import OrderConfirm from "../src/containers/OrderConfirm";
 
 const Router = () => {
   return (

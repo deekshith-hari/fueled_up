@@ -179,18 +179,19 @@ MAIN
 
 .main ul li .item-img {
   display: flex;
-  width: 25%;
+  width: 20%;
 }
 
 .main ul li .item-img img {
-  width: 90%;
+  width: 250px;
   margin: 10px auto;
   padding: 0;
   object-fit: cover;
+  height: auto;
 }
 
 .main ul li .item-info {
-  width: 75%;
+  width: 80%;
 }
 
 .main ul li .item-info p {
