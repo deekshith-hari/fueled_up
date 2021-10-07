@@ -6,6 +6,7 @@ import {
   decreaseCart,
 } from "../../reducks/carts/operations";
 import { getCarts, getSubtotal } from "../../reducks/carts/selectors";
+import { push } from "connected-react-router";
 
 export default function Item({ item }) {
   const selector = useSelector((state) => state);
@@ -13,6 +14,7 @@ export default function Item({ item }) {
   const carts = getCarts(selector);
   const subtotal = getSubtotal(selector);
   const [particularCart, setParticularCart] = useState(null);
+  const key = localStorage.getItem("LOGIN_USER_KEY");
 
   useEffect(() => {
     if (carts != undefined && carts.length > 0) {
@@ -30,7 +32,11 @@ export default function Item({ item }) {
   }, [subtotal]);
 
   const clickAddCart = () => {
-    dispatch(addCart(item));
+    if (key) {
+      dispatch(addCart(item));
+    } else {
+      dispatch(push("/signin"));
+    }
   };
 
   const clickPlusCart = () => {

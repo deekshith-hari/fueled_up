@@ -62,8 +62,10 @@ header .header-links .sign-in-link {
   font-family: Roboto;
 }
 
-header .header-links .sign-in-link a {
+header .header-links .sign-in-link a,
+span {
   color: #495050;
+  cursor: pointer;
 }
 
 header .header-links .img img {
