@@ -62,6 +62,6 @@ export const signOut = () => {
   return async (dispatch) => {
     dispatch(signOutAction());
     localStorage.removeItem(LOGIN_USER_KEY);
-    dispatch(push("/"));
+    dispatch(push("/signin"));
   };
 };
