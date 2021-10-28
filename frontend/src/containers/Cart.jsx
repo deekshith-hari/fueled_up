@@ -37,11 +37,7 @@ export default function Cart() {
           {carts &&
             carts.map((cart) => (
               <li>
-                <CartItem
-                  cart={cart.item}
-                  key={cart.item.id}
-                  presentcarts={cart}
-                />
+                <CartItem key={cart.item.id} presentcart={cart} />
               </li>
             ))}
         </ul>
