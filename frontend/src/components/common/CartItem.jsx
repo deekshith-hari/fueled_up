@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addCart,
-  increaseCart,
-  decreaseCart,
-} from "../../reducks/carts/operations";
+import { increaseCart, decreaseCart } from "../../reducks/carts/operations";
 import { getCarts, getSubtotal } from "../../reducks/carts/selectors";
 
 export default function CartItem({ presentcart }) {
