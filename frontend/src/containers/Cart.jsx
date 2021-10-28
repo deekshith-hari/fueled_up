@@ -34,15 +34,16 @@ export default function Cart() {
       <section class="main">
         <p class="items-text">Your items</p>
         <ul>
-          {
-            (carts,
-            items &&
-              carts.map((cart) => (
-                <li>
-                  <CartItem cart={cart.item} key={cart.item.id} />
-                </li>
-              )))
-          }
+          {carts &&
+            carts.map((cart) => (
+              <li>
+                <CartItem
+                  cart={cart.item}
+                  key={cart.item.id}
+                  presentcarts={cart}
+                />
+              </li>
+            ))}
         </ul>
       </section>
     </>
