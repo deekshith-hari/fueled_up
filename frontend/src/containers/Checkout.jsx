@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import API from "../API";
 import { getCarts, getSubtotal } from "../reducks/carts/selectors";
 import { fetchCarts } from "../reducks/carts/operations";
+import { push } from "connected-react-router";
 const api = new API();
 
 export default function Checkout() {
@@ -78,7 +79,17 @@ export default function Checkout() {
       country: "US",
       telephone: phone,
     };
-    api.orderAdd(params).then(window.location.replace("order-confirmation"));
+
+    api
+      .orderAdd(params)
+      .then((response) => {
+        console.log(response);
+        // dispatch(push("/order-confirmation"));
+        // window.location.replace("order-confirmation");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     e.preventDefault();
   };
 
