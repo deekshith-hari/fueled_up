@@ -35,8 +35,8 @@ class Order(models.Model):
     country = models.CharField(
         'Country', blank=False, null=False, max_length=25, db_index=True, default='United State'
     )
-    telephone = models.IntegerField(
-        'Telephone', blank=True, null=True, db_index=True
+    telephone = models.CharField(
+        'Telephone', blank=True, null=True, db_index=True, max_length=15
     )
     created_at = models.DateTimeField(
         'Created At', blank=True, auto_now_add=True
