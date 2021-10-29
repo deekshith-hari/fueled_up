@@ -84,7 +84,7 @@ export default function Checkout() {
       .orderAdd(params)
       .then((response) => {
         console.log(response);
-        // dispatch(push("/order-confirmation"));
+        dispatch(push("/order-confirmation"));
         // window.location.replace("order-confirmation");
       })
       .catch((error) => {
